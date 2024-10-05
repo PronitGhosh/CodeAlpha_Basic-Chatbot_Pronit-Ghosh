@@ -1,19 +1,18 @@
-def chatbot_response(user):
-    if user.lower()=='hello' or  user.lower()=='hi'or  'hello ' in user.lower() or 'hi ' in user.lower():
-        return("Chatbot : Hi")
-    elif 'how are you' in user.lower():
-        return("Chatbot: I am a bot I am doing well.")
-    elif 'your name' in user.lower() or user.lower()=='what is your name':
-        return("Chatbot: I am chatbot your virtual assistant")
-    else:
-        return("Chatbot : Sorry I dont have information regarding this can you please ask something else.")
-print("Chatbot: Hello you can start the conversation")
-flag=0
-while True:
-    user=input("You :")
-    if "bye" in user:
-        print('Chatbot: Good bye Have a great Day')
-        break
-    response=chatbot_response(user)
-    print(response)
-    
+import nltk
+import random
+import string
+nltk.download('punkt')
+nltk.download('wordnet')  
+from nltk.corpus import wordnet
+from nltk.chat.util import Chat, reflections
+pairs = [
+    [r"hi|hello|hey(.*)", ["Hello!", "Hi there!", "Hey!"]],
+    [r"(.*)your name?", ["My name is ChatBot."]],
+    [r"how are you ?", ["I'm doing well, how about you?"]],
+    [r"(.*)sorry(.*)", ["No problem!", "That's okay!"]],
+    [r"i'm (.*) doing good", ["Nice to hear that!"]],
+    [r"bye|exit", ["Goodbye!", "See you later!"]],
+]
+chatbot = Chat(pairs, reflections)
+print("ChatBot: Hello! Type 'bye' to exit the chat.")
+chatbot.converse()
