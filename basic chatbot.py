@@ -10,8 +10,9 @@ pairs = [
     [r"(.*)your name?", ["My name is ChatBot."]],
     [r"how are you ?", ["I'm doing well, how about you?"]],
     [r"(.*)sorry(.*)", ["No problem!", "That's okay!"]],
-    [r"i'm (.*) doing good", ["Nice to hear that!"]],
+    [r"i am doing good", ["Nice to hear that!"]],
     [r"bye|exit", ["Goodbye!", "See you later!"]],
+    [r"(.*)",["Sorry I dont have information regarding this."]]
 ]
 chatbot = Chat(pairs, reflections)
 print("ChatBot: Hello! Type 'bye' to exit the chat.")
