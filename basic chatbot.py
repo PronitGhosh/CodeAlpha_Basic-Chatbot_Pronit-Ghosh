@@ -16,4 +16,12 @@ pairs = [
 ]
 chatbot = Chat(pairs, reflections)
 print("ChatBot: Hello! Type 'bye' to exit the chat.")
-chatbot.converse()
+while True:
+    user_inp=input("You : ").lower()
+    if 'bye' in user_inp or "goodbye" in user_inp:
+        print("Chatbot : Good bye have a ncie day.")
+        break
+    response=chatbot.respond(user_inp)
+    if response:
+        print(f"Chatbot: {response}")
+        
